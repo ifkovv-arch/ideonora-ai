@@ -302,3 +302,4 @@ applyTheme(localStorage.getItem("ideonora-theme")||"green");
 </script>
 </body>
 </html>
+<!-- IDEONORA AI preview update -->
