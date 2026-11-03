@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#151b19">
+<title>IDEONORA AI — Твоя ідея, твоя музика</title>
+<style>
+:root {
+  --bg:#151b19; --panel:#222b26; --card:#28352b;
+  --accent:#b6e65a; --accent2:#d9f5a5;
+  --text:#f3f5ec; --muted:#b8c2b5;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Arial,sans-serif;transition:.25s;
+}
+header{
+  position:sticky;top:0;z-index:5;background:var(--panel);
+  padding:15px;display:flex;align-items:center;
+  justify-content:space-between;border-bottom:1px solid #ffffff18;
+}
+.logo{font-size:21px;font-weight:800;color:var(--accent)}
+button,select,input,textarea{font:inherit}
+button{
+  border:0;border-radius:12px;padding:12px 16px;
+  background:var(--accent);color:#172014;font-weight:700;
+  cursor:pointer;
+}
+button.secondary{background:var(--card);color:var(--text)}
+main{max-width:950px;margin:auto;padding:18px}
+.hero{
+  padding:27px 20px;border-radius:22px;
+  background:linear-gradient(135deg,var(--panel),var(--card));
+  margin-bottom:20px;
+}
+h1{font-size:clamp(27px,6vw,42px);margin:8px 0}
+h2{font-size:22px}
+p{color:var(--muted);line-height:1.5}
+.grid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+.card{
+  background:var(--card);border:1px solid #ffffff12;
+  padding:17px;border-radius:17px;min-height:110px;
+}
+.card .symbol{font-size:25px}
+.card h3{margin:9px 0 5px}
+.card p{font-size:13px;margin:0}
+section{margin:22px 0}
+.page{display:none}
+.page.active{display:block}
+.field{margin:14px 0}
+label{display:block;margin-bottom:7px;color:var(--muted);font-size:14px}
+input,select,textarea{
+  width:100%;padding:13px;border-radius:11px;
+  border:1px solid #ffffff25;background:var(--panel);
+  color:var(--text);outline:none;
+}
+textarea{min-height:95px;resize:vertical}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
+.theme-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.theme-option{
+  border:2px solid transparent;background:var(--card);
+  color:var(--text);text-align:left;border-radius:13px;padding:12px;
+}
+.theme-option.selected{border-color:var(--accent)}
+.swatches{display:flex;gap:5px;margin-bottom:8px}
+.swatches i{width:22px;height:22px;border-radius:50%;display:block}
+.project{
+  padding:14px;margin:10px 0;background:var(--card);
+  border-radius:13px;overflow-wrap:anywhere;
+}
+nav{
+  display:flex;gap:8px;overflow-x:auto;padding:10px 15px;
+  background:var(--panel);
+}
+nav button{white-space:nowrap;padding:10px 13px}
+.notice{
+  padding:13px;border-radius:12px;background:var(--panel);
+  color:var(--muted);font-size:13px;line-height:1.5;
+}
+footer{text-align:center;padding:25px;color:var(--muted);font-size:12px}
+@media(max-width:480px){
+  main{padding:13px}
+  .grid{gap:9px}
+  .card{padding:13px}
+  .hero{padding:21px 16px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">IDEONORA AI</div>
+  <button class="secondary" onclick="showPage('settings')">⚙ Налаштування</button>
+</header>
+
+<nav>
+  <button onclick="showPage('home')">Головна</button>
+  <button onclick="showPage('create')">Створити</button>
+  <button onclick="showPage('author')">AI Автор</button>
+  <button onclick="showPage('music')">Мої пісні</button>
+  <button onclick="showPage('settings')">Оформлення</button>
+</nav>
+
+<main>
+<div id="home" class="page active">
+  <div class="hero">
+    <div class="logo">ТВОЯ МУЗИЧНА СТУДІЯ</div>
+    <h1>Твоя ідея — твоя музика</h1>
+    <p>Створюй, редагуй і зберігай власні музичні проєкти в одному місці.</p>
+    <button onclick="showPage('create')">＋ Створити пісню</button>
+  </div>
+  <section>
+    <h2>Можливості платформи</h2>
+    <div class="grid">
+      <div class="card" onclick="showPage('create')"><div class="symbol">🎵</div><h3>Створення пісні</h3><p>Ідея, жанр, настрій і стиль.</p></div>
+      <div class="card" onclick="showPage('author')"><div class="symbol">✍️</div><h3>AI Автор</h3><p>Тексти, куплети та приспіви.</p></div>
+      <div class="card" onclick="showPage('studio')"><div class="symbol">🎙️</div><h3>Вокальна студія</h3><p>Підготовка роботи з вокалом.</p></div>
+      <div class="card" onclick="showPage('studio')"><div class="symbol">🎚️</div><h3>Мастеринг</h3><p>Інструменти контролю звуку.</p></div>
+      <div class="card" onclick="showPage('visual')"><div class="symbol">🖼️</div><h3>Обкладинки</h3><p>Ідеї для оформлення релізів.</p></div>
+      <div class="card" onclick="showPage('visual')"><div class="symbol">🎬</div><h3>Музичні відео</h3><p>Планування кліпів і Shorts.</p></div>
+    </div>
+  </section>
+</div>
+
+<div id="create" class="page">
+  <h2>🎵 Створити музичний проєкт</h2>
+  <div class="field"><label>Назва проєкту</label><input id="songTitle" placeholder="Назва твоєї пісні"></div>
+  <div class="field"><label>Жанр</label>
+    <select id="genre">
+      <option>Українська естрада</option><option>Поп</option>
+      <option>Євроданс 90-х</option><option>Синті-поп 80-х</option>
+      <option>Сучасна танцювальна</option><option>Романтична балада</option>
+      <option>Весільна музика</option><option>Інше</option>
+    </select>
+  </div>
+  <div class="field"><label>Настрій</label>
+    <select id="mood"><option>Романтичний</option><option>Енергійний</option><option>Меланхолійний</option><option>Святковий</option><option>Ностальгічний</option></select>
+  </div>
+  <div class="field"><label>Ідея пісні</label><textarea id="songIdea" placeholder="Про що буде твоя пісня?"></textarea></div>
+  <button onclick="saveProject()">Зберегти проєкт</button>
+  <div id="saveMessage"></div>
+</div>
+
+<div id="author" class="page">
+  <h2>✍️ AI Автор</h2>
+  <p>Підготуй завдання для створення тексту пісні.</p>
+  <div class="field"><label>Тема пісні</label><textarea id="authorTopic" placeholder="Наприклад: кохання, спогади, рідний край..."></textarea></div>
+  <div class="field"><label>Структура</label>
+    <select id="structure"><option>2 куплети + приспів</option><option>3 куплети + приспів</option><option>Куплет + приспів + брідж</option></select>
+  </div>
+  <div class="field"><label>Побажання до тексту</label><textarea id="authorWish" placeholder="Чітка рима, природна українська мова, співучі рядки..."></textarea></div>
+  <button onclick="makeAuthorPrompt()">Підготувати завдання</button>
+  <div class="field"><textarea id="authorResult" readonly placeholder="Тут з'явиться підготовлене завдання"></textarea></div>
+  <button class="secondary" onclick="copyText('authorResult')">Скопіювати</button>
+</div>
+
+<div id="studio" class="page">
+  <h2>🎙️ Вокальна студія та мастеринг</h2>
+  <div class="notice">Це демонстраційний інтерфейс. Реальна обробка аудіо потребуватиме підключення аудіосервісу.</div>
+  <div class="field"><label>Вибрати аудіофайл для роботи на пристрої</label><input type="file" accept="audio/*"></div>
+  <div class="card"><h3>Контроль якості</h3><p>Перевірка чіткості вокалу, балансу інструментів, шуму та гучності буде доступна після підключення аудіоаналізатора.</p></div>
+</div>
+
+<div id="visual" class="page">
+  <h2>🎬 Візуальна студія</h2>
+  <div class="field"><label>Назва пісні</label><input id="visualTitle" placeholder="Назва композиції"></div>
+  <div class="field"><label>Що має бути на обкладинці або у відео?</label><textarea id="visualIdea" placeholder="Опиши задум, атмосферу, кольори та сцени..."></textarea></div>
+  <button onclick="makeVisualPrompt()">Підготувати опис</button>
+  <div class="field"><textarea id="visualResult" readonly placeholder="Тут з'явиться опис задуму"></textarea></div>
+  <button class="secondary" onclick="copyText('visualResult')">Скопіювати</button>
+</div>
+
+<div id="music" class="page">
+  <h2>🎼 Мої пісні та проєкти</h2>
+  <div id="projectList"></div>
+  <div class="actions">
+    <button class="secondary" onclick="exportBackup()">Експорт копії</button>
+    <button class="secondary" onclick="document.getElementById('backupFile').click()">Імпорт копії</button>
+    <input id="backupFile" type="file" accept="application/json" hidden onchange="importBackup(event)">
+  </div>
+</div>
+
+<div id="settings" class="page">
+  <h2>⚙️ Налаштування оформлення</h2>
+  <p>Обери кольори своєї музичної студії. Зміни збережуться на цьому пристрої.</p>
+  <div class="theme-list" id="themeList"></div>
+  <div class="notice" style="margin-top:16px">Вибрана тема застосовується до всього інтерфейсу.</div>
+</div>
+</main>
+<footer>IDEONORA AI · Твоя ідея — твоя музика</footer>
+
+<script>
+const themes = {
+  green:{name:"Салатова",bg:"#151b19",panel:"#222b26",card:"#28352b",accent:"#b6e65a",accent2:"#d9f5a5",text:"#f3f5ec",muted:"#b8c2b5"},
+  amber:{name:"Бурштинова",bg:"#211b17",panel:"#30241b",card:"#49301f",accent:"#f3c65b",accent2:"#fff0c4",text:"#fff8e9",muted:"#d5c4ac"},
+  blue:{name:"Блакитна",bg:"#111b29",panel:"#1d2b40",card:"#263a52",accent:"#48c9e8",accent2:"#b7eff9",text:"#f1f7ff",muted:"#b5c6d9"},
+  purple:{name:"Фіолетова",bg:"#191529",panel:"#29213f",card:"#382b52",accent:"#b18aff",accent2:"#dfccff",text:"#f8f3ff",muted:"#c6badb"},
+  light:{name:"Світла",bg:"#f2f3ee",panel:"#ffffff",card:"#e5e9df",accent:"#729d35",accent2:"#d9e9bf",text:"#20251d",muted:"#626b5e"},
+  dark:{name:"Темна",bg:"#111214",panel:"#202226",card:"#2b2e33",accent:"#d2d5da",accent2:"#ffffff",text:"#f5f5f5",muted:"#b5b7bc"}
+};
+function applyTheme(key){
+  const t=themes[key]||themes.green;
+  for(const k in t){
+    if(k!=="name")document.documentElement.style.setProperty("--"+k,t[k]);
+  }
+  localStorage.setItem("ideonora-theme",key);
+  document.querySelectorAll(".theme-option").forEach(b=>b.classList.toggle("selected",b.dataset.theme===key));
+}
+function buildThemes(){
+  const list=document.getElementById("themeList");
+  Object.entries(themes).forEach(([key,t])=>{
+    const b=document.createElement("button");
+    b.className="theme-option";b.dataset.theme=key;
+    b.innerHTML=`<div class="swatches"><i style="background:${t.bg}"></i><i style="background:${t.panel}"></i><i style="background:${t.accent}"></i></div>${t.name}`;
+    b.onclick=()=>applyTheme(key);
+    list.appendChild(b);
+  });
+}
+function showPage(id){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  if(id==="music")renderProjects();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function getProjects(){
+  try{
+    const current=JSON.parse(localStorage.getItem("ideonora-projects")||"[]");
+    const old=JSON.parse(localStorage.getItem("ideonora-projects-v2")||"[]");
+    const legacy=JSON.parse(localStorage.getItem("ideonora_projects")||"[]");
+    return [...current,...old,...legacy];
+  }catch(e){return []}
+}
+function saveProject(){
+  const title=document.getElementById("songTitle").value.trim();
+  if(!title){alert("Введи назву проєкту.");return}
+  const projects=getProjects();
+  projects.push({
+    id:Date.now(),title,genre:document.getElementById("genre").value,
+    mood:document.getElementById("mood").value,
+    idea:document.getElementById("songIdea").value,
+    date:new Date().toLocaleString()
+  });
+  localStorage.setItem("ideonora-projects",JSON.stringify(projects));
+  document.getElementById("saveMessage").textContent="Проєкт збережено на цьому пристрої!";
+  document.getElementById("songTitle").value="";
+  document.getElementById("songIdea").value="";
+}
+function renderProjects(){
+  const list=document.getElementById("projectList");
+  const projects=getProjects();
+  list.innerHTML="";
+  if(!projects.length){list.textContent="Поки що проєктів немає.";return}
+  projects.forEach(p=>{
+    const div=document.createElement("div");div.className="project";
+    const title=document.createElement("strong");title.textContent=p.title||"Без назви";
+    const info=document.createElement("p");info.textContent=(p.genre||"")+(p.mood?" · "+p.mood:"")+(p.date?" · "+p.date:"");
+    div.append(title,info);list.appendChild(div);
+  });
+}
+function makeAuthorPrompt(){
+  const topic=document.getElementById("authorTopic").value;
+  const structure=document.getElementById("structure").value;
+  const wish=document.getElementById("authorWish").value;
+  document.getElementById("authorResult").value=
+`Напиши оригінальний український текст пісні.\nТема: ${topic}\nСтруктура: ${structure}\nПобажання: ${wish}\nЗроби природні рими, співучий ритм, логічний розвиток думки та чітку українську вимову. Уникай штучних фраз і повторів.`;
+}
+function makeVisualPrompt(){
+  document.getElementById("visualResult").value=
+`Створи концепцію обкладинки або музичного відео.\nПісня: ${document.getElementById("visualTitle").value}\nЗадум: ${document.getElementById("visualIdea").value}\nЗбережи читабельність назви та автора, залишай нижню частину вертикального кадру вільною від важливого тексту.`;
+}
+function copyText(id){
+  const el=document.getElementById(id);
+  if(!el.value){alert("Спочатку підготуй текст.");return}
+  navigator.clipboard.writeText(el.value).then(()=>alert("Скопійовано!")).catch(()=>{el.select();document.execCommand("copy");alert("Скопійовано!");});
+}
+function exportBackup(){
+  const blob=new Blob([JSON.stringify(getProjects(),null,2)],{type:"application/json"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);
+  a.download="ideonora-backup.json";a.click();URL.revokeObjectURL(a.href);
+}
+function importBackup(event){
+  const file=event.target.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=()=>{
+    try{
+      const imported=JSON.parse(reader.result);
+      if(!Array.isArray(imported))throw new Error();
+      const all=[...getProjects(),...imported];
+      localStorage.setItem("ideonora-projects",JSON.stringify(all));
+      renderProjects();alert("Копію імпортовано.");
+    }catch(e){alert("Не вдалося прочитати копію.");}
+  };
+  reader.readAsText(file);
+}
+buildThemes();
+applyTheme(localStorage.getItem("ideonora-theme")||"green");
+</script>
+</body>
+</html>
